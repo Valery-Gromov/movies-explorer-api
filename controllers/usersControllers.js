@@ -3,11 +3,11 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const ExistingDataError = require('../utills/ExistingDataError');
 const ValidationError = require('../utills/ValidationError');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 // POST /signup
 const createUser = ((req, res, next) => {
   const { email, password, name } = req.body;
-  console.log(req.body);
   bcrypt.hash(password, 10)
     .then((hash, err) => User.create({
       email, password: hash, name,
@@ -34,11 +34,12 @@ const login = ((req, res, next) => {
 
   return User.findUserByCredentials(email, password)
   .then((user) => {
-    // const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-    const token = jwt.sign({ _id: user._id }, 'dev-secret');
+    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+    // const token = jwt.sign({ _id: user._id }, 'dev-secret');
     res.send({ token });
   })
-  .catch(next);
+  // .catch(next);
+  .catch(err => console.log(err));
 });
 
 // GET /users/me

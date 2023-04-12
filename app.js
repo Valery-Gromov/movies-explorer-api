@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,6 +11,7 @@ const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const helmet = require('helmet');
 const limiter = require('./utills/rateLimit');
+const NotFoundError = require('./utills/NotFoundError');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,6 +20,9 @@ app.use(helmet());
 app.use(limiter);
 
 app.use(routes);
+app.use('/*', (req, res, next) => {
+  next(new NotFoundError('Страница не найдена'));
+});
 
 app.use(errorLogger);
 app.use(errors());
