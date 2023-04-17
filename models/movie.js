@@ -1,29 +1,28 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const movieSchema = new mongoose.Schema({
-  country : {
+  country: {
     type: String,
     required: true,
   },
-  director : {
+  director: {
     type: String,
     required: true,
   },
-  duration : {
+  duration: {
     type: Number,
     required: true,
   },
-  year : {
-    type: Number,
-    required: true,
-  },
-  description : {
+  year: {
     type: String,
     required: true,
   },
-  image: { // у пользователя есть имя — опишем требования к имени в схеме:
-    type: String, // имя — это строка
+  description: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
     required: true,
     validate: {
       validator(v) {
@@ -32,8 +31,8 @@ const movieSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid url`,
     },
   },
-  trailerLink: { // у пользователя есть имя — опишем требования к имени в схеме:
-    type: String, // имя — это строка
+  trailerLink: {
+    type: String,
     required: true,
     validate: {
       validator(v) {
@@ -42,8 +41,8 @@ const movieSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid url`,
     },
   },
-  thumbnail: { // у пользователя есть имя — опишем требования к имени в схеме:
-    type: String, // имя — это строка
+  thumbnail: {
+    type: String,
     required: true,
     validate: {
       validator(v) {
@@ -57,15 +56,15 @@ const movieSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  movieId : { // Поменять поле, когда разберусь с Moovies Explorer
+  movieId: { // Поменять поле, когда разберусь с Moovies Explorer
+    type: Number,
+    required: true,
+  },
+  nameRU: {
     type: String,
     required: true,
   },
-  nameRU : {
-    type: String,
-    required: true,
-  },
-  nameEN : {
+  nameEN: {
     type: String,
     required: true,
   },
