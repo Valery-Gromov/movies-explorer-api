@@ -1,14 +1,14 @@
 const errorsMessages = {
-  globalError: 'На сервере произошла ошибка',
-  movieNameValidationError: 'Некорретные данные при создании фильма',
-  movieNotFoundError: 'Фильм не найден',
-  movieNoRightsError: 'Вы не можете удалить фильм другого пользователя',
-  userExistingDataError: 'Пользователь с таким email уже существует',
-  userValidationError: 'Некорретные данные при создании пользователя',
-  userNotFoundError: 'Пользователь не найден',
-  authError: 'Необходима авторизация',
-  userWrongDataError: 'Неправильные почта или пароль',
-  pageNotFoundError: 'Страница не найдена',
+  globalError: 'An error has occurred on the server',
+  movieNameValidationError: 'Incorrect data when creating a movie',
+  movieNotFoundError: 'The movie was not found',
+  movieNoRightsError: 'You cannot delete another users movie',
+  userExistingDataError: 'A user with this email already exists',
+  userValidationError: 'Incorrect data when creating a user',
+  userNotFoundError: 'The user was not found',
+  authError: 'Authorization is required',
+  userWrongDataError: 'Incorrect email or password',
+  pageNotFoundError: 'The page was not found',
 };
 
 module.exports = { errorsMessages };

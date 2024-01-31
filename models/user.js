@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
       validator(v) {
         return validator.isEmail(v);
       },
-      message: 'Поле "email" должно быть валидным e-mail-адрессом',
+      message: 'The "email" field must be a valid e-mail address',
     },
   },
   password: {

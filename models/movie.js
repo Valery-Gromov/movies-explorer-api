@@ -56,7 +56,7 @@ const movieSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  movieId: { // Поменять поле, когда разберусь с Moovies Explorer
+  movieId: {
     type: Number,
     required: true,
   },
